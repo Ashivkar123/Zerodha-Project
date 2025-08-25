@@ -27,7 +27,7 @@ const Home = () => {
       try {
         // Make sure this endpoint matches your backend verification route
         const { data } = await axios.post(
-          "http://localhost:4000/", // adjust if needed
+          "http://localhost:4000/auth/", // adjust if needed
           {},
           { withCredentials: true }
         );
@@ -54,7 +54,7 @@ const Home = () => {
 
   const handleLogout = () => {
     removeCookie("token");
-    navigate("/signup");
+    navigate("/login");
   };
 
   return (
