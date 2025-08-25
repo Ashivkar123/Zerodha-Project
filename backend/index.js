@@ -20,22 +20,20 @@ const uri = process.env.MONGO_URL;
 // ✅ CORS Configuration
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://zerodha-project-1-ij8a.onrender.com",
+  "https://zerodha-project-frontend-2.onrender.com",
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -71,10 +69,7 @@ app.post("/api/newOrder", async (req, res) => {
 });
 
 // ✅ Serve dashboard UI (React build) from /dashboard
-app.use(
-  "/dashboard",
-  express.static(path.join(__dirname, "../dashboard/build"))
-);
+app.use("/dashboard", express.static(path.join(__dirname, "../dashboard/build")));
 
 app.get("/dashboard/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dashboard/build", "index.html"));
