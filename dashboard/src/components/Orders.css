@@ -1,0 +1,90 @@
+/* General button styles */
+.btn {
+  padding: 6px 14px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Buy Button (Blue) */
+.btn-blue {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-blue:hover {
+  background-color: #0056b3;
+}
+
+/* Sell Button (Red) */
+.btn-red {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-red:hover {
+  background-color: #a71d2a;
+}
+
+/* Orders container */
+.orders {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Table container with light shadow */
+.order-table {
+  margin-top: 20px;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  td, th {
+    padding: 8px;
+  }
+}
