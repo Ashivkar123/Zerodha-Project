@@ -37,9 +37,10 @@ function Login() {
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
       }
 
-      // Redirect to home page after successful login
+      // ✅ Redirect to /home after successful login
       navigate("/home");
     } catch (error) {
       setMessage(

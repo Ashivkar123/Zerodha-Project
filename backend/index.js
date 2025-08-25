@@ -42,6 +42,16 @@ app.use(cookieParser());
 app.use(express.json());
 
 // ✅ API Routes
+
+app.use((req, res, next) => {
+  console.log("➡️ Incoming request:", req.method, req.url);
+  next();
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend running ✅");
+});
+
 app.use("/api", authRoute);
 
 app.get("/api/allHoldings", async (req, res) => {

@@ -20,7 +20,7 @@ root.render(
   <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/verify" element={<VerifyUser />} />

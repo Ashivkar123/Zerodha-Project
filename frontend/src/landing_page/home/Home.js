@@ -26,7 +26,7 @@ const Home = () => {
 
       try {
         const API_URL =
-          "https://zerodha-project-backend-1-2ouc.onrender.com/api/";
+          "https://zerodha-project-backend-1-2ouc.onrender.com/auth/";
 
         console.log("🔍 Sending verification request to:", API_URL);
 
