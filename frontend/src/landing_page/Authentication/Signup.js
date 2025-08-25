@@ -37,7 +37,7 @@ function Signup() {
     setMessage("");
 
     try {
-      const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
+      const BASE_URL = process.env.BASE_URL || "http://localhost:3002";
       const response = await axios.post(`${BASE_URL}/signup`, {
         email,
         username,
