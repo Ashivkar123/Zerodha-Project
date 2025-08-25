@@ -38,6 +38,9 @@ function Login() {
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
+
+        // ✅ Trigger Navbar update instantly
+        window.dispatchEvent(new Event("authChanged"));
       }
 
       // ✅ Redirect to /home after successful login

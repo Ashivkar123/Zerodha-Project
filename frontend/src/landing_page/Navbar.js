@@ -6,13 +6,24 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token); // true if token exists
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      setIsAuthenticated(!!token);
+    };
+
+    checkAuth(); // check on mount
+    window.addEventListener("storage", checkAuth);
+    window.addEventListener("authChanged", checkAuth);
+
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+      window.removeEventListener("authChanged", checkAuth);
+    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsAuthenticated(false);
+    window.dispatchEvent(new Event("authChanged")); // notify Navbar
     navigate("/login");
   };
 
@@ -22,7 +33,7 @@ function Navbar() {
       style={{ backgroundColor: "#FFF" }}
     >
       <div className="container p-2">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/home">
           <img
             src="media/images/logo.svg"
             style={{ width: "25%" }}
