@@ -19,31 +19,40 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        // No token cookie, redirect to login
+        console.warn("⚠️ No token cookie found → redirecting to login");
         navigate("/login");
         return;
       }
 
       try {
-        // Make sure this endpoint matches your backend verification route
-        const { data } = await axios.post(
-          "http://localhost:4000/auth/", // adjust if needed
+        const API_URL =
+          "https://zerodha-project-backend-1-2ouc.onrender.com/api/";
+
+        console.log("🔍 Sending verification request to:", API_URL);
+
+        const response = await axios.post(
+          API_URL,
           {},
           { withCredentials: true }
         );
 
-        const { status, user } = data;
+        console.log("✅ Backend verification response:", response.data);
+
+        const { status, user } = response.data;
 
         if (status) {
           setUsername(user);
           toast(`Hello ${user}`, { position: "top-right", autoClose: 3000 });
         } else {
-          // Token invalid - remove cookie & redirect
+          console.warn("⚠️ Token invalid, redirecting to login");
           removeCookie("token");
           navigate("/login");
         }
       } catch (error) {
-        // Error during verification - remove cookie & redirect
+        console.error(
+          "❌ Verification failed:",
+          error.response ? error.response.data : error.message
+        );
         removeCookie("token");
         navigate("/login");
       }
