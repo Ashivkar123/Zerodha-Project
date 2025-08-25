@@ -20,7 +20,7 @@ const uri = process.env.MONGO_URL;
 // ✅ CORS Configuration
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://zerodha-project-frontend-2.onrender.com",
+  "https://zerodha-project-backend-1-2ouc.onrender.com",
 ];
 
 app.use(cors({
