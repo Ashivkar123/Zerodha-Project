@@ -24,7 +24,7 @@ function Login() {
     setIsLoading(true);
     setMessage("");
 
-    const BASE_URL = process.env.BASE_URL;
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     try {
       const response = await axios.post(`${BASE_URL}/login`, {
