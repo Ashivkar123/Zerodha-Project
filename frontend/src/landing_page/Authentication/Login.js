@@ -24,7 +24,7 @@ function Login() {
     setIsLoading(true);
     setMessage("");
 
-    const BASE_URL = process.env.BASE_URL || "http://localhost:3002";
+    const BASE_URL = process.env.BASE_URL;
 
     try {
       const response = await axios.post(`${BASE_URL}/login`, {
