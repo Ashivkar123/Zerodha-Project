@@ -74,7 +74,7 @@ function Navbar() {
                   {/* ✅ Show Dashboard only when logged in */}
                   <li className="nav-item">
                     <a
-                      href="https://zerodha-dashboard.onrender.com"
+                      href="https://zerodha-dashboard-g8ey.onrender.com"
                       className="nav-link active fw-semibold text-success"
                       rel="noopener noreferrer"
                     >
