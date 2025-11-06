@@ -22,6 +22,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "https://zerodha-project-backend-1-2ouc.onrender.com",
   "https://zerodha-project-frontend-2.onrender.com",
+  "https://zerodha-dashboard-g8ey.onrender.com",
 ];
 
 app.use(

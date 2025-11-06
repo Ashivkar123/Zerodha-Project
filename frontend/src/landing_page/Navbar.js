@@ -23,7 +23,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.dispatchEvent(new Event("authChanged")); // notify Navbar
+    window.dispatchEvent(new Event("authChanged"));
     navigate("/login");
   };
 
@@ -40,6 +40,7 @@ function Navbar() {
             alt="Logo"
           />
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -51,17 +52,14 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <form className="d-flex" role="search">
             <ul className="navbar-nav mb-lg-0">
               {!isAuthenticated ? (
                 <>
                   <li className="nav-item">
-                    <Link
-                      className="nav-link active"
-                      aria-current="page"
-                      to="/signup"
-                    >
+                    <Link className="nav-link active" to="/signup">
                       Signup
                     </Link>
                   </li>
@@ -72,15 +70,29 @@ function Navbar() {
                   </li>
                 </>
               ) : (
-                <li className="nav-item">
-                  <button
-                    className="btn btn-link nav-link active"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
-                </li>
+                <>
+                  {/* ✅ Show Dashboard only when logged in */}
+                  <li className="nav-item">
+                    <a
+                      href="https://zerodha-dashboard.onrender.com"
+                      className="nav-link active fw-semibold text-success"
+                      rel="noopener noreferrer"
+                    >
+                      Dashboard
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-link nav-link active text-danger"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </>
               )}
+
+              {/* Common links */}
               <li className="nav-item">
                 <Link className="nav-link active" to="/about">
                   About
